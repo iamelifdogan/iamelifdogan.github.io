@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>OpenAl</title>
+    <style>
+      *{
+    box-sizing: border-box;
+    margin: 0;
+    }
+    html,body{
+    padding: 0;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    h1,h2,h3,h4,h5,h6,p,div,span{
+      font-family: 'Poppins', sans-serif ;
+    }
+    
+    .hover:hover::before{
+      content: "";
+    position: absolute;
+    top: 32px;
+    width: 75%;
+    height: 2px;
+    background:white;
+    border-radius: 4px;
+    }
+    .hover:hover{
+      color: white;
+    }
+    .hover2:hover::before{
+      content: "";
+    position: absolute;
+    top: 50px;
+    width: 4%;
+    height: 2px;
+    background:white;
+    border-radius: 4px;
+    }
+    .hover2:hover{
+      color: white;
+    }
+    .hover3:hover::before{
+      content: "";
+    position: absolute;
+    top: 50px;
+    width: 4.5%;
+    height: 2px;
+    background:white;
+    border-radius: 4px;
+    }
+    .hover3:hover{
+      color: white;
+    }
+    </style>
+</head>
+<body>
+    <!--HEADER START-->
+    <header class="header-con " id="header">
+        <nav class="navbar fixed-top navbar-expand-lg  mx-0 px-0 py-3">
+    <!--Logo-->
+  <div class="container-fluid mx-0 px-0">
+    <div class="container-fulid logo">
+    <a class="navbar-brand text-white ps-3 pe-2" href="#">
+      <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 320" class="a-icon--logo-text flex h-32" style="width:118;height:32;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><g fill="currentColor" data-v-22ee7e7c=""><path d="m367.44 153.84c0 52.32 33.6 88.8 80.16 88.8s80.16-36.48 80.16-88.8-33.6-88.8-80.16-88.8-80.16 36.48-80.16 88.8zm129.6 0c0 37.44-20.4 61.68-49.44 61.68s-49.44-24.24-49.44-61.68 20.4-61.68 49.44-61.68 49.44 24.24 49.44 61.68z"></path><path d="m614.27 242.64c35.28 0 55.44-29.76 55.44-65.52s-20.16-65.52-55.44-65.52c-16.32 0-28.32 6.48-36.24 15.84v-13.44h-28.8v169.2h28.8v-56.4c7.92 9.36 19.92 15.84 36.24 15.84zm-36.96-69.12c0-23.76 13.44-36.72 31.2-36.72 20.88 0 32.16 16.32 32.16 40.32s-11.28 40.32-32.16 40.32c-17.76 0-31.2-13.2-31.2-36.48z"></path><path d="m747.65 242.64c25.2 0 45.12-13.2 54-35.28l-24.72-9.36c-3.84 12.96-15.12 20.16-29.28 20.16-18.48 0-31.44-13.2-33.6-34.8h88.32v-9.6c0-34.56-19.44-62.16-55.92-62.16s-60 28.56-60 65.52c0 38.88 25.2 65.52 61.2 65.52zm-1.44-106.8c18.24 0 26.88 12 27.12 25.92h-57.84c4.32-17.04 15.84-25.92 30.72-25.92z"></path><path d="m823.98 240h28.8v-73.92c0-18 13.2-27.6 26.16-27.6 15.84 0 22.08 11.28 22.08 26.88v74.64h28.8v-83.04c0-27.12-15.84-45.36-42.24-45.36-16.32 0-27.6 7.44-34.8 15.84v-13.44h-28.8z"></path><path d="m1014.17 67.68-65.28 172.32h30.48l14.64-39.36h74.4l14.88 39.36h30.96l-65.28-172.32zm16.8 34.08 27.36 72h-54.24z"></path><path d="m1163.69 68.18h-30.72v172.32h30.72z"></path><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></g></svg>
+    </a>
+    </div>
+    <!--Hamburger menu-->
+    <button class="navbar-toggler border-0 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-text p-0 text-white">Menu</span>
+    </button>
+    <!--Linkler-->
+    <div class="collapse navbar-collapse ms-5 ps-5" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0  justify-content-center" style="font-size: 1.2rem;">
+        <li class="nav-item dropdown ">
+          <a class="nav-link active dropdown-toggle  text-white hover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Research
+          </a>
+          <ul class="dropdown-menu border-0 bg-black bg-gradient dropdown-menu-dark" style="font-size: 1.2rem;">
+            <li><a class="dropdown-item  text-white" href="#">Overview</a></li>
+            <li><a class="dropdown-item  text-white" href="#">Index</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle text-white hover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Product
+          </a>
+          <ul class="dropdown-menu border-0 bg-black bg-gradient dropdown-menu-dark " style="font-size: 1.2rem;">
+            <li><a class="dropdown-item text-white" href="#">Overview</a></li>
+            <li><a class="dropdown-item text-white" href="#">ChatGPT <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg></a></li>
+            <li><a class="dropdown-item text-white" href="#">GPT-4</a></li>
+            <li><a class="dropdown-item text-white" href="#">DALL-E 2</a></li>
+            <li><a class="dropdown-item text-white" href="#">Customer stories</a></li>
+            <li><a class="dropdown-item text-white" href="#">Safety standards</a></li>
+            <li><a class="dropdown-item text-white" href="#">Pricing</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle text-white hover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Developers
+          </a>
+          <ul class="dropdown-menu border-0 bg-black bg-gradient dropdown-menu-dark " style="font-size: 1.2rem;">
+            <li><a class="dropdown-item text-white" href="#">Overview <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg></a></li>
+            <li><a class="dropdown-item text-white" href="#">Documentation <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg></a></li>
+            <li><a class="dropdown-item text-white" href="#">API reference <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg></a></li>
+            <li><a class="dropdown-item text-white" href="#">Examples <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg></a></li>
+          </ul>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link active text-white hover2 " aria-current="page" href="#">Safety</a>
+          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle text-white hover" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Company
+          </a>
+          <ul class="dropdown-menu border-0 bg-black bg-gradient dropdown-menu-dark " style="font-size: 1.2rem;">
+            <li><a class="dropdown-item text-white" href="#">About</a></li>
+            <li><a class="dropdown-item text-white" href="#">Blog</a></li>
+            <li><a class="dropdown-item text-white" href="#">Careers</a></li>
+            <li><a class="dropdown-item text-white" href="#">Charter</a></li>
+            <li><a class="dropdown-item text-white" href="#">Security</a></li>
+          </ul>
+        </li>
+    </ul>
+    <!--Search button-->
+    <div class="container-fulid search ">
+      <button class="btn btn-secondary  bg-transparent border-0 fs-5 hover3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Search
+     </button>
+        <ul class="dropdown-menu dropdown w-100  rounded-0 m-0 p-0 border-0 bg-transparent bg-gradient">
+          <div class="container-fluid">
+            <div class="row mb-5 pb-5">
+              <div class="col-6 text-start">
+              </div>
+              <div class="col-6 text-end">
+                <span><button type="menu" class="btn  pe-3 fs-5 text-white" data-bs-dismiss="modal" aria-label="Close Search panel">Close</button></span>
+              </div>
+            </div>
+            <div class=" container-fluid  align-items-end">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search for anything" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+      </ul>
+    </div>
+  </div>
+</div>
+</nav>
+    </header>
+    <!--HEADER END-->
+    <!--MAİN START-->
+    <main class="container-fluid m-0 p-0 bg-black">
+        <!--Background image-->
+        <div class="bg-image mx-0 px-0 w-100 vh-100 d-flex justify-content-center align-item-center" style="background-image:url('img/openalimg/poster.avif');
+            background-size: cover;">
+             <div class="row pb-5 mx-0 px-0 justify-content-center align-self-end bg-transparent">
+              <div class=" row col-7 m-0 p-0  ">
+                  <h1 class=" m-0 px-3 p-0 mt-spacing-3 f-display-1 block text-white fs-1 ">Introducing GPT-4, OpenAI’s most advanced system</h1>
+              </div>
+              <div class="row col-12 mx-0 px-0 my-4">
+                  <div class="col-md-4 col-sm-6 col-12 pe-4 p-0 text-xl-end text-lg-center ps-sm-5 pb-sm-2  ">
+                      <a class="btn btn-outline-light border-white " href="#">Learn about GPT-4</a></div>
+                  <div class="col-md-4 col-sm-6 col-12 p-0">
+                      <span class="flex items-center text-lg-center  m-1 p-1">
+                          <button type="button" class="btn btn-link link-underline-light link-underline-opacity-50-hover text-white ">View GPT-4 research</button>
+                      </span></div>
+                  <div class="col-md-4 col-sm-6 col-12 p-0"> 
+                      <!--Pause-->
+                      <div class="pause text-xl-end text-lg-center ps-sm-5  me-3 ">
+                        <span class=" pt-1 pb-2 bg-black"><button aria-label="Play video" type="button" class="btn btn-outline-light  border-0"><svg data-v-22ee7e7c="" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--pause400 a-icon--text a-icon--no-align flex mt-0 md:mt-0 f-ui-1 lg:mt-1 md:-ml-4" data-new="" style="width: 1em; height: 1em;"><g data-v-22ee7e7c="" fill="currentColor"><rect x="9.81" y="2" width="1.38" height="12"></rect><rect x="4.81" y="2" width="1.38" height="12"></rect></g></svg> Pause video</button></span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            </div>
+        <!--<div class="m-0 p-0 ">
+          <video aria-hidden="true" muted class="w-100 h-100 d-flex justify-content-center align-item-center " autoplay loop src="img/openalimg/ana -video.mp4" style="background-size: cover;" ></video>
+      </div>-->
+      <div class="container-fluid p-4">
+        <!--Text card 1-->
+        <div class="row mt-5  justify-content-around">
+          <div class="col-lg-3 col-md-6 col-12 m-0 overflow-hidden">
+            <div class="card bg-transparent border-0">
+              <div class="card-body">
+                <h3 class="card-title text-white">Creating safe AGI that benefits all of humanity</h3>
+                <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white">Learn about OpenAl</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 m-0 overflow-hidden">
+            <div class="card bg-transparent border-0">
+              <div class="card-body">
+                <h3 class="card-title text-white">Pioneering research on the path to AGI</h3>
+                <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white">Learn about our research</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 m-0 overflow-hidden">
+            <div class="card bg-transparent border-0">
+              <div class="card-body">
+                <h3 class="card-title text-white">Transforming work and creativity with AI</h3>
+                <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white">Explore our products</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 m-0 overflow-hidden">
+            <div class="card bg-transparent border-0">
+              <div class="card-body">
+                <h3 class="card-title text-white">Join us in shaping the future of technology</h3>
+                <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white">View careers</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="featurette-divider opacity-100 border-2 text-white">
+        <!--Block 1-->
+        <!--Text-->
+        <div class="row m-0 ">
+          <div class="col-md-4 order-md-2 ms-2 text-white d-block">
+            <h2 class="featurette-heading fw-normal lh-1" style="font-family: 'Times New Roman', Times, serif;">ChatGPT</h2>
+            <p class="fw-bold">We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer follow-up questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.</p>
+            <ul class="list-inline">
+              <li>
+                <span>
+                  <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white ">Try ChatGPT</a>
+               <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-north-east400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4 mb-1" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="5 4.31 5 5.69 9.33 5.69 2.51 12.51 3.49 13.49 10.31 6.67 10.31 11 11.69 11 11.69 4.31 5 4.31" data-v-22ee7e7c=""></polygon></svg>
+              </span>
+              </li>
+              <li>
+                <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block ">Read about ChatGPT</a>
+              </li>
+            </ul>
+            
+          </div>
+          <!--Block 1 image-->
+          <div class="col-md-5 order-md-1 w-50">
+            <img src="img/openalimg/chatgpt.avif" class="w-100 h-100 d-block" alt="">
+          </div>
+        </div>
+      </div>
+      <!--Block 2-->
+      <div class="container-fulid p-4">
+        <hr class="featurette-divider opacity-100 border-2 text-white">
+        <!--Title-->
+        <div class="row  ms-3 ps-3 justify-content-between">
+          <div class="col-sm-6 col-12">
+            <h1 class="text-white" style="font-family: 'Times New Roman', Times, serif;">Lates updates</h1>
+          </div>
+          <div class="col-sm-4 col-12 me-4 text-md-end">
+            <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block  fs-md-5 ">View all updates</a>
+          </div>
+        </div>
+       
+        <!--Block 2 images-->
+      <div class="row  mt-5 mb-5 pb-5 pt-3 px-0 mx-0 justify-content-between card-squeeze">
+        <div class="col-3 px-0" style="width: 21rem;">
+          <div class="card border-0 ">
+            <img src="img/openalimg/bug-bounty-program.avif" alt="">
+          </div>
+          <div class="card-body p-0">
+            <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white fs-5 fw-bold d-block ">Announcing OpenAl's Bug Bounty Program</a>
+            <p class="text-white fs-5">Apr 11, 2023</p>
+          </div>
+          
+        </div>
+        <div class="col-3 px-0" style="width: 21rem;">
+          <div class="card border-0">
+            <img src="img/openalimg/our-approach-to-ai-safety.avif" alt="">
+          </div>
+          <div class="card-body p-0">
+            <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">Our approach to Al safety</a>
+            <p class="text-white fs-5">Apr 5, 2023</p>
+          </div>
+        </div>
+        <div class="col-3 px-0" style="width: 21rem;">
+          <div class="card border-0">
+            <img src="img/openalimg/march-20-chatgpt-outage.avif" alt="">
+          </div>
+          <div class="card-body p-0">
+            <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">March 20 ChatGPT outage:Here's what happened</a>
+            <p class="text-white fs-5">Mar 24, 2023</p>
+          </div>
+        </div>
+        <div class="col-3 px-0" style="width: 21rem;">
+          <div class="card border-0">
+            <img src="img/openalimg/chat-plugins.avif" alt="">
+          </div>
+          <div class="card-body p-0">
+            <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">ChatGPT plugins</a>
+            <p class="text-white fs-5">Mar 23, 2023</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    <!--Block 3-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Block 3 text-->
+    <div class="row  ms-3 ps-3  justify-content-start">
+      <div class="col-md-6 col-12 ms-0 p-0">
+        <h1 class="text-white" style="font-family: 'Times New Roman', Times, serif;">Safety & responsibility</h1>
+      </div>
+      <div class="col-md-6 col-12 ms-0 p-0 text-start">
+        <h4 class="text-white fw-bold ">Our work to create safe and beneficial AI requires a deep understanding of the potential risks and benefits, as well as careful consideration of the impact.</h4>
+        <a href="#" class=" mt-4 card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5">Learn about safety</a>
+      </div>
+    </div>
+    </div>
+    <!--Block 3 image-->
+    <div class="container-fulid">
+      <img src="img/openalimg/stangel-2022-0052.avif" class="w-100 mt-5 pt-5 pb-5 d-block" alt="">
+    </div>
+    <!--Block 4-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Block 4 text-->
+    <div class="row  ms-3 ps-3  justify-content-start">
+      <div class="col-md-6 col-12 ms-0 p-0">
+        <h1 class="text-white" style="font-family: 'Times New Roman', Times, serif;">Research</h1>
+      </div>
+      <div class="col-md-6 col-12 ms-0 p-0 text-start">
+        <h4 class="text-white fw-bold">We research generative models and how to align them with human values.</h4>
+        <a href="#" class=" mt-4 card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5">Learn about our research</a>
+      </div>
+    </div>
+    <!--Block 4 images-->
+    <div class="row mx-0 mt-5 mb-5 pb-5 pt-3 px-0 justify-content-between">
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/gpt-4.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white fs-5 fw-bold d-block ">GPT-4</a>
+          <p class="text-white fs-5">Mar 14, 2023</p>
+        </div>
+        
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/forecasting-misuse.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">Forecasting potential misuses of language models for disinformation campaigns and how to reduce risk</a>
+          <p class="text-white fs-5">Jan 11, 2023</p>
+        </div>
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">Point-E:A system for generating 3D point clouds from complex prompts</a>
+          <p class="text-white fs-5">Dec 16, 2022</p>
+        </div>
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/whisper.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">Introducing Whisper</a>
+          <p class="text-white fs-5">Sep 21, 2022</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--Block 5-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Block 5 text-->
+    <div class="row  ms-3 ps-3  justify-content-start">
+      <div class="col-md-6 col-12 ms-0 p-0">
+        <h1 class="text-white" style="font-family: 'Times New Roman', Times, serif;">Products</h1>
+      </div>
+      <div class="col-md-6 col-12 ms-0 p-0 text-start">
+        <h4 class="text-white fw-bold">Our API platform offers our latest models and guides for safety best practices.</h4>
+        <a href="#" class=" mt-4 card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5">Explore our products</a>
+      </div>
+    </div>
+    <!--Block 5 images-->
+    <div class="row mx-0 mt-5 mb-5 pb-5 pt-3 px-0 justify-content-between">
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/new-and-improved-embeddings-api.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white fs-5 fw-bold d-block ">New and improved embedding model</a>
+          <p class="text-white fs-5">Dec 15, 2022</p>
+        </div>
+        
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/dall-e-now-available-without-waitlist.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">DALL-E now available without wraitlist</a>
+          <p class="text-white fs-5">Sep 28, 2022</p>
+        </div>
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/new-and-improved-content-moderation-tooling.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">New and improved content modertion tooling</a>
+          <p class="text-white fs-5">Aug 10, 2022</p>
+        </div>
+      </div>
+      <div class="col-3 px-0" style="width: 21rem;">
+        <div class="card border-0">
+          <img src="img/openalimg/gpt-3-edit-insert.avif" alt="">
+        </div>
+        <div class="card-body p-0">
+          <a href="#" class="card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5 fw-bold">New GPT-3 capabilities:Edit & insert</a>
+          <p class="text-white fs-5">Mar 15, 2022</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--Block 6-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Block 6 text-->
+    <div class="row  ms-3 ps-3  justify-content-start">
+      <div class="col-md-6 col-12 ms-0 p-0">
+        <h1 class="text-white" style="font-family: 'Times New Roman', Times, serif;">Careers at OpenAI</h1>
+      </div>
+      <div class="col-md-6 col-12 ms-0 p-0 text-start">
+        <h4 class="text-white fw-bold">Developing safe and beneficial AI requires people from a wide range of disciplines and backgrounds.</h4>
+        <a href="#" class=" mt-4 card-link link-underline-light link-underline-opacity-50-hover text-white d-block fs-5">View careers</a>
+      </div>
+    </div>
+    </div>
+    <!--Block 6 image-->
+    <div class="container-fulid">
+      <img src="img/openalimg/stangel-2022-1598.avif" class="w-100 mt-5 pt-5 pb-5 d-block" alt="">
+    </div>
+    <!--Block 7-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Text Block 7-->
+    <div class="row m-3  justify-content-between ">
+      <div class="col-md-4 order-md-1 ms-2 text-white d-block">
+        <h1 class="featurette-heading fw-normal lh-1" style="font-family: 'Times New Roman', Times, serif;">"I encourage my team to keep learning. Ideas in different topics or fields can often inspire new ideas and broaden the potential solution space."</h1>
+        <div class="div">
+          <p class="mt-5"><span class="fw-bold">Lilian Weng</span>  <span class="d-block">Applied AI at OpenAI</span class="d-block"></p>
+          
+        </div>
+      </div>
+      <!--Block 7 image-->
+      <div class="col-md-5 order-md-2 w-50">
+        <img src="img/openalimg/stangel.avif" class="w-100 h-100 d-block" alt="">
+      </div>
+    </div>
+    </div>
+    <!--Block 8-->
+    <div class="container-fulid p-4">
+      <hr class="featurette-divider opacity-100 border-2 text-white">
+    <!--Block 8 title-->
+    <div class="row m-5 mx-4">
+      <div class="col p-0 mb-0">
+        <h2 class="mt-spacing-3 f-display-1 block mb-0 text-white " style="font-size: 4rem; font-family: 'Times New Roman', Times, serif;">Join us in shaping the future of technology.</h2>
+      </div>
+    </div>
+    <div class="d-grid gap-2 m-5  mx-4">
+      <div class="btn btn-outline-light border pt-3" style="height: 90px;"> <span class="text-bg-white fs-3 ">View careers</div>
+    </div>
+    </div>
+    </main>
+    <!--MAİN END-->
+    <!--FOOTER START-->
+        <footer class="row py-5 px-0 mx-0 bg-black text-white text-center">
+          <div class="col-2 mb-3 my-5">
+            <a href="/" class=" mb-3 link-dark text-decoration-none">
+              <svg data-v-22ee7e7c="" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 320" class="a-icon--logo-text flex h-32 max-w-[126px] ms-4 mt-3 text-white" data-new="" aria-hidden="true" style="width: 118px; height: 32px;"><g data-v-22ee7e7c="" fill="currentColor"><path d="m367.44 153.84c0 52.32 33.6 88.8 80.16 88.8s80.16-36.48 80.16-88.8-33.6-88.8-80.16-88.8-80.16 36.48-80.16 88.8zm129.6 0c0 37.44-20.4 61.68-49.44 61.68s-49.44-24.24-49.44-61.68 20.4-61.68 49.44-61.68 49.44 24.24 49.44 61.68z"></path><path d="m614.27 242.64c35.28 0 55.44-29.76 55.44-65.52s-20.16-65.52-55.44-65.52c-16.32 0-28.32 6.48-36.24 15.84v-13.44h-28.8v169.2h28.8v-56.4c7.92 9.36 19.92 15.84 36.24 15.84zm-36.96-69.12c0-23.76 13.44-36.72 31.2-36.72 20.88 0 32.16 16.32 32.16 40.32s-11.28 40.32-32.16 40.32c-17.76 0-31.2-13.2-31.2-36.48z"></path><path d="m747.65 242.64c25.2 0 45.12-13.2 54-35.28l-24.72-9.36c-3.84 12.96-15.12 20.16-29.28 20.16-18.48 0-31.44-13.2-33.6-34.8h88.32v-9.6c0-34.56-19.44-62.16-55.92-62.16s-60 28.56-60 65.52c0 38.88 25.2 65.52 61.2 65.52zm-1.44-106.8c18.24 0 26.88 12 27.12 25.92h-57.84c4.32-17.04 15.84-25.92 30.72-25.92z"></path><path d="m823.98 240h28.8v-73.92c0-18 13.2-27.6 26.16-27.6 15.84 0 22.08 11.28 22.08 26.88v74.64h28.8v-83.04c0-27.12-15.84-45.36-42.24-45.36-16.32 0-27.6 7.44-34.8 15.84v-13.44h-28.8z"></path><path d="m1014.17 67.68-65.28 172.32h30.48l14.64-39.36h74.4l14.88 39.36h30.96l-65.28-172.32zm16.8 34.08 27.36 72h-54.24z"></path><path d="m1163.69 68.18h-30.72v172.32h30.72z"></path><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></g></svg>
+            </a>
+          </div>
+          
+         <div class="col-md-2 col-6 mb-3 my-5">
+
+         </div>
+      
+          <div class="col-md-2 col-6 mb-3 my-5">
+            <h5>Research</h5>
+            <ul class="nav flex-column ">
+              <li class="nav-item  mb-2"><a href="#" class="nav-link p-0 text-white ">Overview</a></li>
+              <li class="nav-item  mb-2"><a href="#" class="nav-link p-0 text-white ">Index</a></li>
+            </ul>
+          </div>
+      
+          <div class="col-md-2 col-6 mb-3 my-5">
+            <h5>Product</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Overview</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">GPT-4</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">DALL-E 2</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Customer stories</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Safety standards</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
+            </ul>
+          </div>
+      
+          <div class="col-md-2 col-6 mb-3 my-5">
+            <h5>Safety</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Overview</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-6 mb-3 my-5">
+            <h5>Company</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Blog</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Careers</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Charter</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Security</a></li>
+            </ul>
+          </div>
+          <hr class="featurette-divider opacity-100 border-2 text-white">
+          <div class="footer-2 d-flex">
+            <div class="col-md-4 ps-5 align-items-center  fs-5">
+              <span class="mb-3 mb-md-0 text-white fw-bold"><span>OpenAl</span> © 2015-2023</span>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Terms & policies</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Privacy policy</a></li>
+              </ul>
+            </div>
+            <div class="div">
+              <div class="div">
+                <ul class="nav justify-content-center pb-3 mb-3 fs-5">
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Twitter</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-white">YouTube</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-white">GitHub</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-white">SoundCloud</a></li>
+                  <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Linkedln</a></li>
+                </ul>
+              </div>
+              <div class="div">
+                <ul class="nav  pb-3 mb-3 fs-5 ">
+                  <span>
+                    <li class="nav-item"><a href="#header" class="nav-link px-2 text-white">Back to top <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="a-icon--arrow-up400 a-icon--text a-icon--no-align top-[0.05em] relative f-ui-1 ml-2 -mr-4" style="width:1em;height:1em;" data-new="" aria-hidden="true" data-v-22ee7e7c=""><polygon fill="currentColor" points="12.73 7.25 8 2.52 3.27 7.25 4.25 8.23 7.31 5.17 7.31 14 8.69 14 8.69 5.17 11.75 8.23 12.73 7.25" data-v-22ee7e7c=""></polygon></svg></a>
+                    </li>
+                  </span>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+    <!--FOOTER END-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
