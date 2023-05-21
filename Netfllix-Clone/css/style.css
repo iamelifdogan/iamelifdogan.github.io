@@ -1,0 +1,300 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+html,body{padding: 0;}
+h1,h2,h3,h4,h5,h6,p,div,span{
+    font-family: 'Poppins', sans-serif ;
+  }
+
+/*HEADER START*/
+
+@media (max-width: 900px) {
+    .language1{
+        display: none;
+    }
+   
+}
+@media (max-width: 392px) {
+   .lang-content{
+    margin-top: 20px;
+   }
+   
+}
+@media (max-width: 1900px) {
+    .svg-1{
+        display: none;
+    }
+}
+@media (max-width: 479px) {
+    .svg-1{
+     display: inline;
+    }
+    .svg-2{
+        display: none;
+    }
+}
+@media (max-width: 984px) {
+    .baslayin{
+    display: none;
+    }
+}
+@media (max-width: 1900px) {
+    .header-content{
+        width: 60%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 300%;
+        font-weight: 200;
+    }
+    .header-content h3{
+        font-size: 150%;
+        font-weight: 200;
+        margin-bottom: 10px;
+       }
+       .header-content p{
+        font-size: 120%;
+       }
+}
+@media (max-width: 1436px) {
+    .header-content{
+        width: 60%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 260%;
+        font-weight: 200;
+    }
+    .header-content h3{
+        font-size: 150%;
+        font-weight: 200;
+        margin-bottom: 10px;
+       }
+       .header-content p{
+        font-size: 120%;
+       }
+}
+@media (max-width: 1293px) {
+    .header-content{
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 250%;
+        font-weight: 200;
+    }
+    .header-content h3{
+        font-size: 150%;
+        font-weight: 200;
+        margin-bottom: 10px;
+       }
+       .header-content p{
+        font-size: 100%;
+       }
+}
+@media (max-width: 1196px) {
+    .header-content{
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 220%;
+        font-weight: 200;
+    }
+}
+@media (max-width: 1052px) {
+    .header-content{
+        width: 70%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 200%;
+        font-weight: 200;
+    }
+    .header-content h3{
+        font-size: 130%;
+        margin-bottom: 5px;
+       }
+       .header-content p{
+        font-size: 95%;
+       }
+}
+@media (max-width: 956px) {
+    .header-content{
+        width: 75%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 185%;
+    }
+    .header-content h3{
+        font-size: 120%;
+        margin-bottom: 5px;
+       }
+       .header-content p{
+        font-size: 90%;
+       }
+}
+@media (max-width: 768px) {
+    .header-content{
+        width: 80%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 165%;
+    }
+    .header-content h3{
+        font-size: 90%;
+        margin-bottom: 10px;
+       }
+       .header-content p{
+        font-size: 70%;
+       }
+}
+@media (max-width: 621px) {
+    .header-content{
+        width: 85%;
+        position: unset;
+        transform: none;
+        top: 26%;
+        left: 40%;
+        text-align: center;
+    }
+    .header-content h1{
+        margin-bottom: 10px;
+        font-size: 150%;
+        font-weight: bold;
+    }
+    .header-content h3{
+        font-size: 80%;
+        margin-bottom: 10px;
+       }
+       .header-content p{
+        font-size: 60%;
+       }
+}
+
+@media (max-width: 1400px) {
+    .email-box{
+        height: 45px;
+    }
+}
+@media (max-width: 1200px) {
+    .email-box{
+        height: 40px;
+    }
+}
+@media (max-width: 992px) {
+    .email-box{
+        height: 35px;
+    }
+}
+@media (max-width: 768px) {
+    .email-box{
+        height: 30px;
+    }
+}
+@media (max-width: 576px) {
+    .email-box{
+        height: 25px;
+    }
+}
+@media (max-width: 1400px) {
+    .email-box1{
+        height: 45px;
+    }
+}
+@media (max-width: 1200px) {
+    .email-box1{
+        height: 40px;
+    }
+}
+@media (max-width: 992px) {
+    .email-box1{
+        height: 35px;
+    }
+}
+@media (max-width: 768px) {
+    .email-box1{
+        height: 33px;
+    }
+}
+@media (max-width: 576px) {
+    .email-box1{
+        height: 33px;
+    }
+}
+/*HEADER END*/
+
+/*MAİN START*/
+@media (max-width: 1191px) {
+    .animation-box.box-text1{
+        font-size: 2%;
+    }
+    .animation-box.indiriliyor{
+        font-size: 1.5%;
+        color: blue;
+    }
+}
+/*que-content*/
+@media (max-width: 1400px) {
+    .que-content{
+        font-size: 130%;
+    }
+}
+@media (max-width: 1200px) {
+    .que-content{
+        font-size: 120%;
+    }
+}
+@media (max-width: 992px) {
+    .que-content{
+        font-size: 110%;
+    }
+}
+@media (max-width: 768px) {
+    .que-content{
+        font-size: 100%;
+    }
+}
+@media (max-width: 576px) {
+    .que-content{
+        font-size: 90%;
+    }
+}
+
+/*MAİN END*/
